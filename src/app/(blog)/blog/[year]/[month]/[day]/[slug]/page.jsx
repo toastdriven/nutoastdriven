@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { marked } from 'marked';
 
 import {
-  toNumericMonth,
+  fromShortMonth,
   toVerboseDate
-} from '@/utils/formatting';
+} from '@/utils/dates';
+import { buildBlogUrl } from '@/utils/formatting';
 import { getPost } from '@/utils/posts';
 
 export default async function PostDetail({ params, ...props }) {
   const post = await getPost(
     params.year,
-    toNumericMonth(params.month),
+    fromShortMonth(params.month),
     params.day,
     params.slug,
   );
@@ -26,7 +27,7 @@ export default async function PostDetail({ params, ...props }) {
     <>
       <p className="back_up">
         <Link
-          href={`/blog/${params.year}/${params.month}/${params.day}/`}
+          href={buildBlogUrl(params.year, fromShortMonth(params.month), params.day)}
         >
           &larr; Back to {toVerboseDate(post.date)}
         </Link>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { toDate, truncateWords } from '@/utils/formatting';
+import { toYMD } from '@/utils/dates';
+import { truncateWords } from '@/utils/formatting';
 import { getAllPosts } from '@/utils/posts';
 
 export default async function Home(props) {
@@ -31,7 +32,7 @@ export default async function Home(props) {
       <ul>
         {allPostsData.map((entry, offset) => (
           <li key={offset}>
-            <span className="date">{toDate(entry.date)}</span> &mdash;{' '}
+            <span className="date">{toYMD(entry.date)}</span> &mdash;{' '}
             <Link href={entry.url}>
               {truncateWords(entry.title, 10)}
             </Link>

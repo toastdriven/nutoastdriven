@@ -4,21 +4,9 @@ import path from 'path';
 import { globSync } from 'glob';
 import matter from 'gray-matter';
 
+import { buildBlogUrl } from '@/utils/formatting';
+
 const postsDir = path.join(process.cwd(), 'posts');
-const monthMap = {
-  0: 'jan',
-  1: 'feb',
-  2: 'mar',
-  3: 'apr',
-  4: 'may',
-  5: 'jun',
-  6: 'jul',
-  7: 'aug',
-  8: 'sep',
-  9: 'oct',
-  10: 'nov',
-  11: 'dec',
-};
 
 export function getAllPosts() {
   const postsData = [];
@@ -33,10 +21,11 @@ export function getAllPosts() {
 
     const date = new Date(post.date)
     post.date = date;
+
     const year = date.getFullYear();
-    const month = monthMap[date.getMonth()];
+    const month = date.getMonth();
     const day = date.getDate().toString().padStart(2, '0');
-    post.url = `/blog/${year}/${month}/${day}/${post.slug}`;
+    post.url = buildBlogUrl(year, month, day, post.slug);
 
     postsData.push(post);
   });
@@ -54,13 +43,12 @@ export function getPostsByYear(year) {
     }
 
     foundPosts.push(post);
-    break;
   }
 
   return foundPosts;
 }
 
-export function getPostByMonth(year, month, day, slug) {
+export function getPostsByMonth(year, month, day, slug) {
   const allPosts = getAllPosts();
   const foundPosts = [];
 
@@ -74,7 +62,6 @@ export function getPostByMonth(year, month, day, slug) {
     }
 
     foundPosts.push(post);
-    break;
   }
 
   return foundPosts;
@@ -98,7 +85,6 @@ export function getPostsByDay(year, month, day, slug) {
     }
 
     foundPosts.push(post);
-    break;
   }
 
   return foundPosts;

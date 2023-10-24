@@ -54,6 +54,18 @@ a:hover {
   color: #AAAAAA;
 }
 
+.entries ul {
+  list-style: circle;
+}
+
+.entries ul li {
+  margin-bottom: 20px;
+}
+
+.metadata {
+  color: #999999;
+}
+
 footer {
   color: #999999;
   font-size: .8em;
