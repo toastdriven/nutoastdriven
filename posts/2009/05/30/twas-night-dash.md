@@ -1,5 +1,5 @@
 ---
-title: ''Twas The Night Of The Dash'
+title: "'Twas The Night Of The Dash"
 date: '2009-05-30'
 time: '22:24:43'
 author: 'Daniel'

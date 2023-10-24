@@ -1,5 +1,5 @@
 ---
-title: 'Indentation's Effects On Culture (Or How I Learned To Hit Tab And Love The Python)'
+title: "Indentation's Effects On Culture (Or How I Learned To Hit Tab And Love The Python)"
 date: '2008-03-31'
 time: '22:31:32'
 author: 'Daniel'

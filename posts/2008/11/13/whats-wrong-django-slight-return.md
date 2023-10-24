@@ -1,5 +1,5 @@
 ---
-title: 'What's Wrong With Django (Slight Return)'
+title: "What's Wrong With Django (Slight Return)"
 date: '2008-11-13'
 time: '22:41:32'
 author: 'Daniel'
@@ -32,7 +32,7 @@ slug: 'whats-wrong-django-slight-return'
 >>> call_command('loaddata', 'my_fixture_here.json') #doctest: +ELLIPSIS
 Installing yaml fixture 'my_fixture_here' ...
 Installed 4 object(s) from 1 fixture(s)
-"""    
+"""
 </code></pre>
 
 <p>Ouch, ouch, ouch. Nevermind the fact that we're essentially simulating manually running the <code>./manage.py loaddata my_fixture_here</code>, this command dumps output to the screen. And if your fixtures change (add/remove objects), you either use the <code>doctest: ELLIPSIS</code> comment or gain a fresh test failure because it loaded all the data you asked it to load (different fixture count).</p>
