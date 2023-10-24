@@ -1,4 +1,9 @@
+'use client';
+import { useState } from 'react';
+
 export default function Page(props) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <div className="container">
       <header className="vcard">
@@ -216,123 +221,132 @@ export default function Page(props) {
 
         <div id="more_experience_wrapper">
           <p>
-            <a href="#" className="" id="show_me_everything">More experience...</a>
-            <a href="#" className="hidden" id="show_me_less">Less experience...</a>
+            <a
+              className="experience_toggle"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore
+                ? "Less experience..."
+                : "More experience..."
+              }
+            </a>
           </p>
 
-          <div id="more_experience" className="hidden">
-            <div className="thing_i_have_done_for_money">
-              <h3><a href="http://toastdriven.com/">Toast Driven</a></h3>
+          {showMore && (
+            <div id="more_experience">
+              <div className="thing_i_have_done_for_money">
+                <h3><a href="http://toastdriven.com/">Toast Driven</a></h3>
 
-              <div className="metadata">
-                <span className="date_range">05/2011 - 12/2012</span>{' '}
-                <span className="position">(Owner/Founder/Head Bit Herder)</span>
+                <div className="metadata">
+                  <span className="date_range">05/2011 - 12/2012</span>{' '}
+                  <span className="position">(Owner/Founder/Head Bit Herder)</span>
+                </div>
+
+                <p>
+                  Ran my own Python/Django consultancy. Originally just me, we
+                  had as many as three people. Helped many clients with
+                  their RESTful APIs, integrating search as well as general
+                  development.
+                </p>
               </div>
 
-              <p>
-                Ran my own Python/Django consultancy. Originally just me, we
-                had as many as three people. Helped many clients with
-                their RESTful APIs, integrating search as well as general
-                development.
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3>Mediaphormedia</h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3>Mediaphormedia</h3>
+                <div className="metadata">
+                  <span className="date_range">06/2008 - 04/2011</span>{' '}
+                  <span className="position">(Senior Web Developer)</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">06/2008 - 04/2011</span>{' '}
-                <span className="position">(Senior Web Developer)</span>
+                <p>
+                  Worked for the birthplace of Django developing Ellington, an
+                  award-winning news CMS. Ported it to Django 1.0, vastly revised
+                  the search functionality, added an API, worked on a Q&amp;A
+                  app, lots of importers.
+                </p>
               </div>
 
-              <p>
-                Worked for the birthplace of Django developing Ellington, an
-                award-winning news CMS. Ported it to Django 1.0, vastly revised
-                the search functionality, added an API, worked on a Q&amp;A
-                app, lots of importers.
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3>Forkinit</h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3>Forkinit</h3>
+                <div className="metadata">
+                  <span className="date_range">12/2009 - 02/2011</span>{' '}
+                  <span className="position">(Co-founder)</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">12/2009 - 02/2011</span>{' '}
-                <span className="position">(Co-founder)</span>
+                <p>
+                  Developed a more modern recipe site. Took a structured approach,
+                  parsing recipe bodies to extract data. Allowed for "forking"
+                  a recipe (start with a base &amp; be able to make your changes).
+                </p>
               </div>
 
-              <p>
-                Developed a more modern recipe site. Took a structured approach,
-                parsing recipe bodies to extract data. Allowed for "forking"
-                a recipe (start with a base &amp; be able to make your changes).
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3><a href="http://toastdriven.com/">Toast Driven (Round 1)</a></h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3><a href="http://toastdriven.com/">Toast Driven (Round 1)</a></h3>
+                <div className="metadata">
+                  <span className="date_range">04/2008 - 05/2008</span>{' '}
+                  <span className="position">Owner</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">04/2008 - 05/2008</span>{' '}
-                <span className="position">Owner</span>
+                <p>
+                  Run as a Ruby on Rails shop for short period of time.
+                  Worked on a reporting site (using Flex, Actionscript &amp; Rails)
+                  to produce nice charts/graphs for surveying software.
+                </p>
               </div>
 
-              <p>
-                Run as a Ruby on Rails shop for short period of time.
-                Worked on a reporting site (using Flex, Actionscript &amp; Rails)
-                to produce nice charts/graphs for surveying software.
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3><a href="http://liveoak360.com/">Live Oak</a></h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3><a href="http://liveoak360.com/">Live Oak</a></h3>
+                <div className="metadata">
+                  <span className="date_range">11/2005 - 04/2008</span>{' '}
+                  <span className="position">Web Developer</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">11/2005 - 04/2008</span>{' '}
-                <span className="position">Web Developer</span>
+                <p>
+                  Did PHP/MySQL development for a variety of clients.
+                  Tasks included developing on multi-lingual CMSes, several
+                  e-commerce sites, hosting &amp; server administration,
+                  &amp; the development of a PHP5 web framework called Acorn.
+                  Also some Rails development for a client.
+                </p>
               </div>
 
-              <p>
-                Did PHP/MySQL development for a variety of clients.
-                Tasks included developing on multi-lingual CMSes, several
-                e-commerce sites, hosting &amp; server administration,
-                &amp; the development of a PHP5 web framework called Acorn.
-                Also some Rails development for a client.
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3><a href="http://www.nfusion.com/">nFusion</a></h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3><a href="http://www.nfusion.com/">nFusion</a></h3>
+                <div className="metadata">
+                  <span className="date_range">01/2007 - 04/2007</span>{' '}
+                  <span className="position">Contractor</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">01/2007 - 04/2007</span>{' '}
-                <span className="position">Contractor</span>
+                <p>
+                  Developed a e-sales application for a Fortune 500
+                  sales team using PHP/MySQL &amp; a custom PHP5
+                  framework similar to Sinatra/Rails.
+                </p>
               </div>
 
-              <p>
-                Developed a e-sales application for a Fortune 500
-                sales team using PHP/MySQL &amp; a custom PHP5
-                framework similar to Sinatra/Rails.
-              </p>
-            </div>
+              <div className="thing_i_have_done_for_money">
+                <h3>WTS Bank</h3>
 
-            <div className="thing_i_have_done_for_money">
-              <h3>WTS Bank</h3>
+                <div className="metadata">
+                  <span className="date_range">06/2005 - 11/2005</span>{' '}
+                  <span className="position">Developer</span>
+                </div>
 
-              <div className="metadata">
-                <span className="date_range">06/2005 - 11/2005</span>{' '}
-                <span className="position">Developer</span>
+                <p>
+                  Used Perl &amp; Oracle to help process online ACH
+                  transactions.
+                </p>
               </div>
 
-              <p>
-                Used Perl &amp; Oracle to help process online ACH
-                transactions.
-              </p>
+              <div className="thing_i_have_done_for_money">
+                <h4>Plus Assorted College &amp; High School Jobs...</h4>
+              </div>
             </div>
-
-            <div className="thing_i_have_done_for_money">
-              <h4>Plus Assorted College &amp; High School Jobs...</h4>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
