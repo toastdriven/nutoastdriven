@@ -1,18 +1,11 @@
 import Link from 'next/link';
 
-import { getAllPosts } from '../../utils/posts';
+import { toDate, truncateWords } from '@/utils/formatting';
+import { getAllPosts } from '@/utils/posts';
 
 export default async function Home(props) {
-  const allPostsData = await getAllPosts();
-
-  function toDate(date) {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  }
-
-  function truncateWords(text) {
-    const bits = text.split(' ');
-    return bits.slice(0, 10).join(' ');
-  }
+  let allPostsData = await getAllPosts();
+  allPostsData.reverse();
 
   return (
     <>
@@ -23,10 +16,10 @@ export default async function Home(props) {
 
       <p>
         Toast Driven has also twice existed in the past
-        as a software consultancy, notably specializing in:
+        as a software consultancy, notably specializing in:{' '}
         <a href="http://djangoproject.com/">Django</a>,
         <a href="http://python.org/">Python</a>, Javascript, search &amp; REST
-        APIs. I also run a couple projects (such as the
+        APIs. I also run a couple projects (such as the{' '}
         <a href="http://djangodash.com/">Django Dash</a>) as TD.
       </p>
 
@@ -36,10 +29,10 @@ export default async function Home(props) {
       </p>
 
       <ul>
-        {allPostsData.map((entry) => (
-          <li>
-            <span className="date">{toDate(entry.publish_on)}</span> &mdash;
-            <Link href="{entry.get_absolute_url}">
+        {allPostsData.map((entry, offset) => (
+          <li key={offset}>
+            <span className="date">{toDate(entry.date)}</span> &mdash;{' '}
+            <Link href={entry.url}>
               {truncateWords(entry.title, 10)}
             </Link>
           </li>
