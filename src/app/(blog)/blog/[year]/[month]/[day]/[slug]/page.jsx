@@ -5,13 +5,17 @@ import { marked } from 'marked';
 
 import {
   fromShortMonth,
+  toShortMonth,
   toVerboseDate
 } from '@/utils/dates';
 import {
   buildBlogUrl,
   truncateWords
 } from '@/utils/formatting';
-import { getPost } from '@/utils/posts';
+import {
+  getAllPosts,
+  getPost,
+} from '@/utils/posts';
 
 export async function generateMetadata({ params }) {
   const post = await getPost(
@@ -40,6 +44,17 @@ export async function generateMetadata({ params }) {
       authors: [post.author],
     },
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    year: post.date.getFullYear().toString(),
+    month: toShortMonth(post.date.getMonth()),
+    day: post.date.getDate().toString().padStart(2, '0'),
+    slug: post.slug,
+  }));
 }
 
 export default async function PostDetail({ params, ...props }) {

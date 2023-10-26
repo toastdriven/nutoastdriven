@@ -1,13 +1,28 @@
 import Link from 'next/link';
 
 import PostSummary from '@/components/PostSummary';
+import { toShortMonth } from '@/utils/dates';
 import { buildBlogUrl } from '@/utils/formatting';
-import { getPostsByYear } from '@/utils/posts';
+import {
+  getAllPosts,
+  getPostsByYear,
+} from '@/utils/posts';
 
 export async function generateMetadata({ params }) {
   return {
     title: `All Posts for ${params.year}`,
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    year: post.date.getFullYear().toString(),
+    // month: toShortMonth(post.date.getMonth()),
+    // day: post.date.getDate().toString().padStart(2, '0'),
+    // slug: post.slug,
+  }));
 }
 
 export default async function PostsByYear({ params, ...props }) {

@@ -3,10 +3,14 @@ import Link from 'next/link';
 import PostSummary from '@/components/PostSummary';
 import {
   fromShortMonth,
+  toShortMonth,
   toFullMonth,
 } from '@/utils/dates';
 import { buildBlogUrl } from '@/utils/formatting';
-import { getPostsByMonth } from '@/utils/posts';
+import {
+  getAllPosts,
+  getPostsByMonth,
+} from '@/utils/posts';
 
 export async function generateMetadata({ params }) {
   const numericMonth = fromShortMonth(params.month);
@@ -14,6 +18,17 @@ export async function generateMetadata({ params }) {
   return {
     title: `All Posts for ${toFullMonth(numericMonth)}, ${params.year}`,
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    year: post.date.getFullYear().toString(),
+    month: toShortMonth(post.date.getMonth()),
+    // day: post.date.getDate().toString().padStart(2, '0'),
+    // slug: post.slug,
+  }));
 }
 
 export default async function PostsByMonth({ params, ...props }) {

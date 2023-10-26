@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Page(props) {
@@ -8,7 +9,7 @@ export default function Page(props) {
     <div className="container">
       <header className="vcard">
         <h1>
-          Hi, I'm{' '}
+          Hi, I&apos;m{' '}
           <div className="n">
             <div className="given-name">Daniel</div>
             <div className="family-name">Lindsley</div>
@@ -36,10 +37,11 @@ export default function Page(props) {
         <h2><a name="about-link">About</a></h2>
 
         <p>
-          I'm a developer specializing in web-based technologies. I'm a pretty
-          full-stack kinda guy, comfy with everything from database schema
-          design to broad system architecture to front-end HTML/CSS/Javascript
-          work. I write well-tested code &amp; aim to constantly improve.
+          I&apos;m a developer specializing in web-based technologies.
+          I&apos;m a pretty full-stack kinda guy, comfy with everything from
+          database schema design to broad system architecture to front-end
+          HTML/CSS/Javascript work. I write well-tested code &amp; aim to
+          constantly improve.
         </p>
 
         <p>
@@ -106,7 +108,7 @@ export default function Page(props) {
           <p>
             Addressed a chunk of technical debt & helped improve local
             development, including Docker & debugging improvements.
-            Spec'd & built a revenue reconciliation system.
+            Spec&apos;d & built a revenue reconciliation system.
             Provided mentorship for others.
           </p>
         </div>
@@ -122,7 +124,7 @@ export default function Page(props) {
           <p>
             Developed an API backend & React-based SPA frontend for
             a white-labeled small business application. Upgraded a
-            learning platform's backend & frontend through several
+            learning platform&apos;s backend & frontend through several
             major framework versions.
           </p>
         </div>
@@ -278,7 +280,7 @@ export default function Page(props) {
 
                 <p>
                   Developed a more modern recipe site. Took a structured approach,
-                  parsing recipe bodies to extract data. Allowed for "forking"
+                  parsing recipe bodies to extract data. Allowed for &quot;forking&quot;
                   a recipe (start with a base &amp; be able to make your changes).
                 </p>
               </div>
@@ -359,18 +361,18 @@ export default function Page(props) {
 
         <ul>
           <li>
-            <a href="http://haystacksearch.org/"><img src="/img/resume/haystack.png" title="Haystack" className="screenshot" /></a>
+            <a href="http://haystacksearch.org/"><Image src="/Image/resume/haystack.png" alt="Haystack" className="screenshot" /></a>
 
             <h3><a href="http://haystacksearch.org/">Haystack</a></h3>
 
             <p>
               Haystack acts as a search layer for Django, similar to
               the Django ORM. Nice API &amp; lots of functionality.
-              I'm the primary author.
+              I&apos;m the primary author.
             </p>
           </li>
           <li>
-            <a href="http://tastypieapi.org/"><img src="/img/resume/tastypie.png" title="Tastypie" className="screenshot" /></a>
+            <a href="http://tastypieapi.org/"><Image src="/Image/resume/tastypie.png" alt="Tastypie" className="screenshot" /></a>
 
             <h3><a href="http://tastypieapi.org/">Tastypie</a></h3>
 
@@ -381,19 +383,19 @@ export default function Page(props) {
             </p>
           </li>
           <li>
-            <a href="http://djangodash.com/"><img src="/img/resume/djangodash.png" title="Django Dash" className="screenshot" /></a>
+            <a href="http://djangodash.com/"><Image src="/Image/resume/djangodash.png" alt="Django Dash" className="screenshot" /></a>
 
             <h3><a href="http://djangodash.com/">Django Dash</a></h3>
 
             <p>
               The Django Dash is an annual 48-hour programming
               competition for Django. Teams of up to three compete
-              for bragging rights &amp; prizes. I've run it for 7
-              years now.
+              for bragging rights &amp; prizes. I&apos;ve run it for 7
+              years.
             </p>
           </li>
           <li>
-            <a href="http://wsgiwrestle.com/"><img src="/img/resume/wsgiwrestle.png" title="WSGI Wrestle" className="screenshot" /></a>
+            <a href="http://wsgiwrestle.com/"><Image src="/Image/resume/wsgiwrestle.png" alt="WSGI Wrestle" className="screenshot" /></a>
 
             <h3><a href="http://wsgiwrestle.com/">WSGI Wrestle</a></h3>
 
