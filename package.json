@@ -1,7 +1,10 @@
 {
   "name": "nutoastdriven",
+  "description": "My personal site, rewritten using Next.js.",
   "version": "0.1.0",
-  "private": true,
+  "author": "Daniel Lindsley",
+  "license": "BSD-3-Clause",
+  "repository": "https://github.com/toastdriven/nutoastdriven",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
