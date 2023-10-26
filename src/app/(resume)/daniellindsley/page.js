@@ -361,7 +361,7 @@ export default function Page(props) {
 
         <ul>
           <li>
-            <a href="http://haystacksearch.org/"><Image src="/Image/resume/haystack.png" alt="Haystack" className="screenshot" /></a>
+            <a href="http://haystacksearch.org/"><Image src="/img/resume/haystack.png" alt="Haystack" className="screenshot" /></a>
 
             <h3><a href="http://haystacksearch.org/">Haystack</a></h3>
 
@@ -372,7 +372,7 @@ export default function Page(props) {
             </p>
           </li>
           <li>
-            <a href="http://tastypieapi.org/"><Image src="/Image/resume/tastypie.png" alt="Tastypie" className="screenshot" /></a>
+            <a href="http://tastypieapi.org/"><Image src="/img/resume/tastypie.png" alt="Tastypie" className="screenshot" /></a>
 
             <h3><a href="http://tastypieapi.org/">Tastypie</a></h3>
 
@@ -383,7 +383,7 @@ export default function Page(props) {
             </p>
           </li>
           <li>
-            <a href="http://djangodash.com/"><Image src="/Image/resume/djangodash.png" alt="Django Dash" className="screenshot" /></a>
+            <a href="http://djangodash.com/"><Image src="/img/resume/djangodash.png" alt="Django Dash" className="screenshot" /></a>
 
             <h3><a href="http://djangodash.com/">Django Dash</a></h3>
 
@@ -395,7 +395,7 @@ export default function Page(props) {
             </p>
           </li>
           <li>
-            <a href="http://wsgiwrestle.com/"><Image src="/Image/resume/wsgiwrestle.png" alt="WSGI Wrestle" className="screenshot" /></a>
+            <a href="http://wsgiwrestle.com/"><Image src="/img/resume/wsgiwrestle.png" alt="WSGI Wrestle" className="screenshot" /></a>
 
             <h3><a href="http://wsgiwrestle.com/">WSGI Wrestle</a></h3>
 
