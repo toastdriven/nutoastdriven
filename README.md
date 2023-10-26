@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# `nutoastdriven`
 
-## Getting Started
+My personal site, rewritten using [Next.js](https://nextjs.org/).
 
-First, run the development server:
+This code is run locally & used to statically generate [Toast Driven](https://toastdriven.com/).
+
+
+## Setup
+
+Gotta have Node installed locally (`20.6.1`, installed via `asdf`). You'll also want [Just](https://just.systems/).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ npm i
+$ cp -i .env.example .env
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Creating Posts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Create the correct subdirectories in `posts/` for year/month/day, then create the post itself using Markdown.
 
-## Learn More
+A template:
 
-To learn more about Next.js, take a look at the following resources:
+```markdown
+---
+title: 'The Title Goes Here'
+date: 'YYYY-MM-DD'
+time: 'HH:MM:SS'
+author: 'Daniel'
+slug: 'the-slug-goes-here'
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The post itself goes here...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Then you can generate & upload in a single go with `$ just refresh`.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Running the Dev Site
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+$ npm run dev
+```
+
+Then hit [http://localhost:3000](http://localhost:3000) in your browser.
+
+
+## Only Generating the Site
+
+```bash
+$ just build
+```
+
+
+## Only Uploading the Generated Site
+
+```bash
+$ just upload
+```
