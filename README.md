@@ -2,7 +2,9 @@
 
 My personal site, rewritten using [Next.js](https://nextjs.org/).
 
-This code is run locally & used to statically generate [Toast Driven](https://toastdriven.com/).
+Of most interest, this uses the new-style [Next.js App Router](https://nextjs.org/docs/app/building-your-application/routing), as opposed to the older "Pages Router" that the tutorial uses.
+
+This code is run locally & used to statically generate [Toast Driven](https://toastdriven.com/). This is likely only mostly useful to me, but feel free to refer to it and/or use code from it.
 
 
 ## Setup
