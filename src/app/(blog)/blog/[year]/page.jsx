@@ -4,6 +4,12 @@ import PostSummary from '@/components/PostSummary';
 import { buildBlogUrl } from '@/utils/formatting';
 import { getPostsByYear } from '@/utils/posts';
 
+export async function generateMetadata({ params }) {
+  return {
+    title: `All Posts for ${params.year}`,
+  };
+}
+
 export default async function PostsByYear({ params, ...props }) {
   let posts = await getPostsByYear(params.year);
   posts.reverse();

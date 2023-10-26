@@ -8,6 +8,14 @@ import {
 import { buildBlogUrl } from '@/utils/formatting';
 import { getPostsByMonth } from '@/utils/posts';
 
+export async function generateMetadata({ params }) {
+  const numericMonth = fromShortMonth(params.month);
+
+  return {
+    title: `All Posts for ${toFullMonth(numericMonth)}, ${params.year}`,
+  };
+}
+
 export default async function PostsByMonth({ params, ...props }) {
   const numericMonth = fromShortMonth(params.month);
   let posts = await getPostsByMonth(params.year, numericMonth);

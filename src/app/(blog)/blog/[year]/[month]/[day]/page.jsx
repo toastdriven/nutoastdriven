@@ -9,6 +9,15 @@ import {
 import { buildBlogUrl } from '@/utils/formatting';
 import { getPostsByDay } from '@/utils/posts';
 
+export async function generateMetadata({ params }) {
+  const numericMonth = fromShortMonth(params.month);
+  const day = parseInt(params.day);
+
+  return {
+    title: `All Posts for ${toFullMonth(numericMonth)} ${day}, ${params.year}`,
+  };
+}
+
 export default async function PostsByDay({ params, ...props }) {
   const numericMonth = fromShortMonth(params.month);
   const posts = await getPostsByDay(params.year, numericMonth, params.day);

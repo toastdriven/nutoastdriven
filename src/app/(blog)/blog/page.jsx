@@ -3,6 +3,10 @@ import Link from 'next/link';
 import PostSummary from '@/components/PostSummary';
 import { getAllPosts } from '@/utils/posts';
 
+export const metadata = {
+  title: 'All Posts',
+};
+
 export default async function AllPosts({ params, ...props }) {
   let posts = await getAllPosts();
   posts.reverse();

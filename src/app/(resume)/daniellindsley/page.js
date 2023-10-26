@@ -58,6 +58,8 @@ export default function Page(props) {
           <dd>Django</dd>
           <dd>Javascript</dd>
           <dd>React</dd>
+          <dd>Preact</dd>
+          <dd>Next.js</dd>
           <dd>HTML/CSS</dd>
           <dd>Docker</dd>
           <dd>PostgreSQL</dd>

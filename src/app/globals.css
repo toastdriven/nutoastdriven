@@ -23,6 +23,14 @@ h1 {
   @apply text-7xl align-top;
 }
 
+h2 {
+  @apply text-2xl align-top mb-4;
+}
+
+h3 {
+  @apply text-xl align-top mb-4;
+}
+
 h1 a,
 h1 a:visited,
 h1 a:hover {
@@ -41,6 +49,14 @@ ul,
 ol,
 dl {
   padding-left: 20px;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
 }
 
 a,
@@ -64,6 +80,10 @@ a:hover {
 
 .metadata {
   color: #999999;
+}
+
+pre {
+  @apply overflow-x-auto bg-gray-200 p-4 mb-4;
 }
 
 footer {
