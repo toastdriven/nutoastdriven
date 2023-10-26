@@ -18,8 +18,9 @@ export default async function Home(props) {
       <p>
         Toast Driven has also twice existed in the past
         as a software consultancy, notably specializing in:{' '}
-        <a href="http://djangoproject.com/">Django</a>,
-        <a href="http://python.org/">Python</a>, Javascript, search &amp; REST
+        <a href="http://djangoproject.com/">Django</a>,{' '}
+        <a href="http://python.org/">Python</a>,{' '}
+        Javascript, search &amp; REST
         APIs. I also run a couple projects (such as the{' '}
         <a href="http://djangodash.com/">Django Dash</a>) as TD.
       </p>
