@@ -45,15 +45,16 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body lang="en">
-        <div className="mx-16 my-20 flex flex-row">
-          <div className="mx-auto w-72 mt-4 grow-0 shrink-0">
+        <div className="mx-8 my-8 md:flex md:flex-row md:mx-16 md:my-20">
+          <div className="mx-auto mt-4 hidden sm:block md:grow-0 md:shrink-0 md:w-80 md:h-80">
             <Image
               src={toastLogoMega}
               alt="Toast Driven"
+              className="object-contain"
             />
           </div>
 
-          <div className="ml-12 grow-0 shrink min-w-sm max-w-lg">
+          <div className="md:ml-12 md:grow-0 md:shrink min-w-sm max-w-lg">
             <header>
               <h1 className="mb-6">
                 <a href="/">Toast Driven</a>
@@ -64,6 +65,14 @@ export default function RootLayout({ children }) {
               {children}
             </section>
 
+            <div className="mx-auto mt-12 w-32 h-32 md:hidden">
+              <Image
+                src={toastLogoMega}
+                alt="Toast Driven"
+                className="object-contain"
+              />
+            </div>
+
             <footer id="about">
               <p className="copyright">
                 Established 2008 &mdash;
@@ -72,7 +81,7 @@ export default function RootLayout({ children }) {
             </footer>
           </div>
 
-          <div className="grow shrink"></div>
+          <div className="md:grow md:shrink"></div>
         </div>
       </body>
     </html>

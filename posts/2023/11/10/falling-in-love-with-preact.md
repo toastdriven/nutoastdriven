@@ -51,7 +51,7 @@ Over time recently, I've gradually acclimated to JSX's... eccentricities, and ac
 
 However, [HTM](https://github.com/developit/htm) is a lovely alternative to JSX. It looks & feels closer to something like [mustache](https://mustache.github.io/), is built off standard Tagged Templates, and doesn't require a transpiler to function!
 
-> Note: Yes, I know you don't **have** to use JSX with React, or that you can use HTM **with** React. But as opposed to those options, the Preact+HTM path is well-documented & well-tread.
+> **Note:** Yes, I know you don't _have_ to use JSX with React, or that you can use HTM _with_ React. But as opposed to those options, the Preact+HTM path is well-documented & well-tread.
 
 For example, to revisit the earlier `Avatar` example:
 
@@ -81,7 +81,7 @@ Most of the React docs assume you're building a significant SPA, and significant
 
 While that may be second-nature to many/most Javascript enthusiasts, there are lots of regular backend developers or designers who only occasionally help with some code to whom this is a daunting task. Even once things are setup, it's easy for build or dependency issues to creep in over time.
 
-> Note: Again, I know it's possible to do ultra-light React installs without all this. But it's not well-documented nor particularly easy to suss out.
+> **Note:** Again, I know it's possible to do ultra-light React installs without all this. But it's not well-documented nor particularly easy to suss out.
 
 In contrast, here's a way we could use that `Avatar` with Preact at the smallest scale:
 

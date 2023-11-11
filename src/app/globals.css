@@ -83,7 +83,27 @@ a:hover {
 }
 
 pre {
-  @apply overflow-x-auto bg-gray-200 p-4 mb-4;
+  @apply overflow-x-auto bg-gray-800 text-slate-100 p-4 mb-4;
+}
+
+blockquote {
+  @apply bg-gray-100 text-gray-500 p-4 mb-4;
+}
+
+blockquote p:last-child {
+  @apply mb-0;
+}
+
+blockquote strong {
+  @apply font-bold;
+}
+
+blockquote em {
+  @apply italic;
+}
+
+p code {
+  @apply bg-gray-800 text-slate-100 px-2 py-1;
 }
 
 footer {
