@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
     <html>
       <body lang="en">
         <div className="mx-8 my-8 md:flex md:flex-row md:mx-16 md:my-20">
-          <div className="mx-auto mt-4 hidden sm:block md:grow-0 md:shrink-0 md:w-80 md:h-80">
+          <div className="mx-auto mt-4 hidden sm:block md:grow-0 md:shrink-0 md:w-72 md:h-72">
             <Image
               src={toastLogoMega}
               alt="Toast Driven"
