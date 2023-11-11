@@ -10,6 +10,8 @@ Over the last couple years, I had a couple roles that gave me a chance to stretc
 
 But, as the title alludes to, I want to talk about a library I haven't seen many talk about: [Preact](https://preactjs.com/).
 
+> **Note:** This is not a "hate" article. React & the mentioned other libraries all have their strong suits, or deserve credit for introducing new ideas. I just want to sing the praises of a library I'm enjoying.
+
 ## What is Preact?
 
 Preact is a Javascript library that allows you to easily build a component-based UI. If you've ever worked with any React, [Vue.js](https://vuejs.org/), or similar, the terminology/feature-set/architecture will be very familiar.
@@ -135,10 +137,19 @@ Of course, it has a great full-SPA story as well, with routing, debugging, testi
 
 ## Conclusion
 
-I'm old enough now, & experienced enough as an open-source author, that I think virtrol towards any software is pointless & detrimental. I'm not calling out React, nor saying _"it's bad lol"_. I'm almost certainly going to use React & other libraries more in the future, without public complaint/hate.
+_Updated:_ I've really been enjoying Preact, having built several smaller projects with it. I really love the:
 
-But variety is the spice of life, and I'd rather spend my time singing the praises of things I like. And I really like Preact, having built a couple smaller projects with it.
+* The familliarity of React-like syntax,
+* the small footprint,
+* the ease of getting started,
+* ...and the option of using HTM
 
-My take is that I'd encourage you to give it a try. You can literally start from a single `.html` file in an editor (feel free to use the above as a starting point), which is fantastic for experimentation.
+I'd encourage you to give it a try. You can literally start from a single `.html` file in an editor (feel free to use the above as a starting point), which is fantastic for experimentation.
 
 Happy Javascript-ing!
+
+
+### Changelog:
+
+* **2023-11-11:** Revised conclusion & added a note to the introduction. Thanks to [xian](http://mintchaos.com/) for suggesting the edits & proof-reading.
+* **2023-11-10:** Initial post.
