@@ -121,8 +121,8 @@ footer {
       @apply text-base font-bold mt-4 underline;
     }
 
-    dd {
-      /* @apply pl-2; */
+    dd a {
+      @apply text-zinc-500;
     }
   }
 }

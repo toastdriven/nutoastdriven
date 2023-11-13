@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Contact(props) {
   return (
@@ -63,48 +63,71 @@ function About(props) {
   );
 }
 
-function Skills(props) {
+function Skills({ ...props }) {
+  const professionalSkills = [
+    { name: 'Python', url: 'https://python.org/' },
+    { name: 'Django', url: 'https://djangoproject.com/' },
+    { name: 'Javascript', url: 'https://www.javascript.com/' },
+    { name: 'React', url: 'https://react.dev/' },
+    { name: 'Preact', url: 'https://preactjs.com/' },
+    { name: 'Next.js', url: 'https://nextjs.org/' },
+    { name: 'HTML', url: 'https://en.wikipedia.org/wiki/HTML' },
+    { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+    { name: 'Docker', url: 'https://docker.com/' },
+    { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+    { name: 'AWS', url: 'https://aws.amazon.com/' },
+    { name: 'Git', url: 'https://git-scm.com/' },
+    { name: 'Node.js', url: 'https://nodejs.org/' },
+    { name: 'PostGIS', url: 'https://postgis.net/' },
+    { name: 'GDAL', url: 'https://gdal.org/index.html' },
+    { name: 'OpenLayers', url: 'https://openlayers.org/' },
+    { name: 'Redis', url: 'https://redis.io/' },
+    { name: 'Elasticsearch', url: 'https://www.elastic.co/elasticsearch' },
+    { name: 'Solr', url: 'https://solr.apache.org/' },
+    { name: 'nginx', url: 'https://www.nginx.com/' },
+    { name: 'memcached', url: 'https://memcached.org/' },
+    { name: 'Lua', url: 'https://www.lua.org/' },
+  ];
+  const olderSkills = [
+    { name: 'Google Cloud', url: 'https://cloud.google.com/' },
+    { name: 'Typescript', url: 'https://www.typescriptlang.org/' },
+    { name: 'Arduino', url: 'https://www.arduino.cc/' },
+    { name: 'Go', url: 'https://go.dev/' },
+    { name: 'Swift/Obj-C/Cocoa', url: 'https://developer.apple.com/swift/' },
+    { name: 'Apache', url: 'https://apache.org/' },
+    { name: 'MySQL', url: 'https://www.mysql.com/' },
+    { name: 'Ruby', url: 'https://www.ruby-lang.org/en/' },
+    { name: 'PHP', url: 'https://php.net/' },
+    { name: 'Varnish', url: 'https://varnish-cache.org/' },
+    { name: 'Mercurial', url: 'https://www.mercurial-scm.org/' },
+    { name: 'Erlang', url: 'https://www.erlang.org/' },
+    { name: 'Riak', url: 'https://riak.com/index.html' },
+  ];
+
   return (
     <>
       <h2><a name="skills-link">Skills</a></h2>
 
       <dl>
         <dt>Professional</dt>
-        <dd>Python</dd>
-        <dd>Django</dd>
-        <dd>Javascript</dd>
-        <dd>React</dd>
-        <dd>Preact</dd>
-        <dd>Next.js</dd>
-        <dd>HTML/CSS</dd>
-        <dd>Docker</dd>
-        <dd>PostgreSQL</dd>
-        <dd>Cloud Infra (AWS/GCloud)</dd>
-        <dd>Git</dd>
-        <dd>Node.js</dd>
-        <dd>PostGIS</dd>
-        <dd>GDAL</dd>
-        <dd>OpenLayers</dd>
-        <dd>Redis</dd>
-        <dd>Elasticsearch</dd>
-        <dd>Solr</dd>
-        <dd>nginx</dd>
-        <dd>memcached</dd>
-        <dd>Lua</dd>
+        {professionalSkills.map((skillInfo, offset) => (
+          <dd key={offset}>
+            <a
+              href={skillInfo.url}
+            >
+              {skillInfo.name}
+            </a>
+          </dd>
+        ))}
 
         <dt>Older/Experimental</dt>
-        <dd>Arduino</dd>
-        <dd>Go</dd>
-        <dd>Swift/Obj-C/Cocoa</dd>
-        <dd>Apache</dd>
-        <dd>MySQL</dd>
-        <dd>Ruby</dd>
-        <dd>PHP</dd>
-        <dd>Varnish</dd>
-        <dd>Mercurial</dd>
-        <dd>Erlang</dd>
-        <dd>Riak</dd>
-        <dd>Typescript</dd>
+        {olderSkills.map((skillInfo, offset) => (
+          <dd key={offset}>
+            <a href={skillInfo.url}>
+              {skillInfo.name}
+            </a>
+          </dd>
+        ))}
       </dl>
     </>
   );
@@ -116,7 +139,8 @@ function Experience({
   startDate,
   endDate,
   jobTitle,
-  setFeaturedSkills,
+  skillsUsed = [],
+  setHighlightedSkills,
   initialCollapsed = false,
   ...props
 }) {
@@ -197,9 +221,9 @@ function Portfolio(props) {
           <h3><a href="http://haystacksearch.org/">Haystack</a></h3>
 
           <p>
+            <strong>Primary author</strong><br />
             Haystack acts as a search layer for Django, similar to
             the Django ORM. Nice API &amp; lots of functionality.
-            I&apos;m the primary author.
           </p>
         </div>
 
@@ -217,9 +241,10 @@ function Portfolio(props) {
           <h3><a href="http://tastypieapi.org/">Tastypie</a></h3>
 
           <p>
+            <strong>Primary author</strong><br />
             Tastypie is a library that adds RESTful APIs to your
             Django application. Full-featured &amp; designed to be
-            easily extended. Also the primary author.
+            easily extended.
           </p>
         </div>
 
@@ -237,10 +262,10 @@ function Portfolio(props) {
           <h3><a href="http://djangodash.com/">Django Dash</a></h3>
 
           <p>
+            <strong>Organizer</strong><br />
             The Django Dash is an annual 48-hour programming
             competition for Django. Teams of up to three compete
-            for bragging rights &amp; prizes. I&apos;ve run it for 7
-            years.
+            for bragging rights &amp; prizes. Run from 2008&mdash;2014.
           </p>
         </div>
 
@@ -258,9 +283,10 @@ function Portfolio(props) {
           <h3><a href="http://wsgiwrestle.com/">WSGI Wrestle</a></h3>
 
           <p>
+            <strong>Organizer</strong><br />
             The WSGI Wrestle is an annual 48-hour programming
             competition, similar to the Django Dash but for all
-            Python programmers.
+            Python programmers. Run once in 2014.
           </p>
         </div>
       </div>
@@ -269,6 +295,8 @@ function Portfolio(props) {
 }
 
 export default function Page(props) {
+  const [highlightedSkills, setHighlightedSkills] = useState([]);
+
   return (
     <div className="container">
       <div className="md:flex md:flex-row print:flex print:flex-row">
@@ -277,13 +305,15 @@ export default function Page(props) {
             <Contact />
           </header>
 
-          <div class="mini-divider">&nbsp;</div>
+          <div className="mini-divider">&nbsp;</div>
 
           <section id="skills">
-            <Skills />
+            <Skills
+              highlightedSkills={highlightedSkills}
+            />
           </section>
 
-          <div class="mini-divider md:hidden">&nbsp;</div>
+          <div className="mini-divider md:hidden">&nbsp;</div>
 
           <section
             className="portfolio md:hidden print:visible"
@@ -291,7 +321,7 @@ export default function Page(props) {
             <Portfolio />
           </section>
 
-          <div class="mini-divider md:hidden print:hidden">&nbsp;</div>
+          <div className="mini-divider md:hidden print:hidden">&nbsp;</div>
         </div>
 
         <div className="md:grow md:ml-8 print:grow print:ml-8">
@@ -299,7 +329,7 @@ export default function Page(props) {
             <About />
           </section>
 
-          <div class="mini-divider">&nbsp;</div>
+          <div className="mini-divider">&nbsp;</div>
 
           <section id="experience">
             <h2><a name="experience-link">Experience</a></h2>
@@ -310,11 +340,23 @@ export default function Page(props) {
               startDate="05/2023"
               endDate="09/2023"
               jobTitle="Senior Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'React',
+                'Javascript',
+                'Typescript',
+                'Node.js',
+                'PostgreSQL',
+                'Redis',
+                'Docker',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
-              Addressed a chunk of technical debt & helped improve local
+              Addressed a chunk of Django technical debt & helped improve local
               development, including Docker & debugging improvements.
-              Spec&apos;d & built a revenue reconciliation system.
-              Provided mentorship for others.
+              Spec&apos;d & built a Typescript-based revenue reconciliation
+              system. Provided mentorship for others.
             </Experience>
 
             <Experience
@@ -323,11 +365,21 @@ export default function Page(props) {
               startDate="12/2021"
               endDate="05/2023"
               jobTitle="Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'React',
+                'Javascript',
+                'Docker',
+                'PostgreSQL',
+                'Redis',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
-              Developed an API backend & React-based SPA frontend for
+              Developed a Django API backend & React frontend for
               a white-labeled small business application. Upgraded a
-              learning platform&apos;s backend & frontend through several
-              major framework versions.
+              learning platform&apos;s Django backend & React frontend through
+              several major framework versions of each.
             </Experience>
 
             <Experience
@@ -336,12 +388,20 @@ export default function Page(props) {
               startDate="06/2021"
               endDate="11/2021"
               jobTitle="Principal Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'Docker',
+                'PostgreSQL',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
-              Converted a large codebase to a container-based setup as
+              Converted a large Python codebase to a container-based setup as
               part of improving CI/CD. Assisted in redesigning a large
-              monolithic codebase into a service-based approach. Several
+              monolithic Django codebase into a service-based approach. Several
               internal technical planning documents for pending
-              projects. Worked on improving a bulk import system.
+              projects. Worked on improving a bulk import system using Django
+              Rest Framework.
             </Experience>
 
             <Experience
@@ -350,14 +410,29 @@ export default function Page(props) {
               startDate="02/2020"
               endDate="05/2021"
               jobTitle="Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'Javascript',
+                'OpenLayers',
+                'PostgreSQL',
+                'PostGIS',
+                'GDAL',
+                'HTML',
+                'CSS',
+                'AWS',
+                'Docker',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
               Built a web-based mapping tool & scientific platform to
-              support wildfire firefighting. Implemented several
+              support wildfire firefighting, using
+              Django / PostGIS / GDAL / OpenLayers. Implemented several
               scientific whitepapers from scratch to compute potential
               control locations & suppression difficulty index, as
-              well as all the component calculations. Also involved a
-              wide array of data ingest, and building out a full JS
-              frontend to support it. Built out & automated full AWS
+              well as all the component input calculations for ML processing.
+              This also involved a wide array of data ingest and building out a
+              full JS frontend to support it. Built out & automated full AWS
               infrastructure.
             </Experience>
 
@@ -367,10 +442,16 @@ export default function Page(props) {
               startDate="01/2019"
               endDate="01/2020"
               jobTitle="Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Docker',
+                'PostgreSQL',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
               Rebuilt the development environment used by all Gen2
               developers, based on Docker & Compose. Rewrote the
-              bootstrapping process for new environments, cutting new
+              bootstrapping process for new environments in Python, cutting new
               setup time from days down to 20 minutes. Provided user
               support & 8 releases for a community of ~150 developers.
               Ad-hoc managed a team of 4 for several months. Helped
@@ -383,14 +464,27 @@ export default function Page(props) {
               startDate="03/2014"
               endDate="01/2019"
               jobTitle="Senior Web Developer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'PostgreSQL',
+                'Javascript',
+                'HTML',
+                'CSS',
+                'Redis',
+                'Node.js',
+                'Google Cloud',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
               Worked on the{' '}
               <a href="https://go.urbanairship.com/">Urban Airship</a>{' '}
-              user interface, including several major features around
-              timezones, third-party integrations, data migrations and
-              a team-based permission system. Performed many code
-              reviews, established internal documentation/procedures
-              &amp; spent quite a bit of time mentoring.
+              user interface in Django & pure Javascript, including several
+              major features around timezones, third-party integrations,
+              PostgreSQL data migrations, and a team-based permission system.
+              Performed many code reviews, established internal
+              documentation/procedures &amp; spent quite a bit of time
+              mentoring.
             </Experience>
 
             <Experience
@@ -399,9 +493,15 @@ export default function Page(props) {
               startDate="03/2013"
               endDate="03/2014"
               jobTitle="Python SDE II"
+              skillsUsed={[
+                'Python',
+                'PostgreSQL',
+                'AWS',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
             >
-              Worked on <a href="http://docs.pythonboto.org/">boto</a>,
-              including adding a high-level interface for DynamoDB(2),
+              Worked on <a href="http://docs.pythonboto.org/">boto</a> for
+              Python, including adding a high-level interface for DynamoDB(2),
               approximately a dozen releases &amp; many service updates.
               Also developed the initial code for{' '}
               <a href="https://github.com/toastdriven/boto3">boto3</a>.
@@ -415,12 +515,24 @@ export default function Page(props) {
               startDate="05/2011"
               endDate="12/2012"
               jobTitle="Owner/Founder/Head Bit Herder"
-              collapsed={true}
+              skillsUsed={[
+                'Python',
+                'Django',
+                'Javascript',
+                'HTML',
+                'CSS',
+                'PostgreSQL',
+                'Solr',
+                'Elasticsearch',
+                'Redis',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
+              initialCollapsed={true}
             >
               Ran my own Python/Django consultancy. Originally just me, we
               had as many as three people. Helped many clients with
-              their RESTful APIs, integrating search as well as general
-              development.
+              their RESTful APIs, integrating search in Elasticsearch & Solr,
+              as well as general development.
             </Experience>
 
             <Experience
@@ -428,12 +540,25 @@ export default function Page(props) {
               startDate="06/2008"
               endDate="04/2011"
               jobTitle="Senior Web Developer"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'PostgreSQL',
+                'HTML',
+                'CSS',
+                'Varnish',
+                'Apache',
+                'Solr',
+                'memcached',
+                'Redis',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
               Worked for the birthplace of Django developing Ellington, an
               award-winning news CMS. Ported it to Django 1.0, vastly revised
-              the search functionality, added an API, worked on a Q&amp;A
-              app, lots of importers.
+              the search functionality using Solr, added an API, worked on a
+              Q&amp;A app, and lots of importers.
             </Experience>
 
             <Experience
@@ -441,11 +566,21 @@ export default function Page(props) {
               startDate="12/2009"
               endDate="02/2011"
               jobTitle="Co-founder"
+              skillsUsed={[
+                'Python',
+                'Django',
+                'Javascript',
+                'HTML',
+                'CSS',
+                'PostgreSQL',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
-              Developed a more modern recipe site. Took a structured approach,
-              parsing recipe bodies to extract data. Allowed for &quot;forking&quot;
-              a recipe (start with a base &amp; be able to make your changes).
+              Developed a more modern recipe site in Django. Took a structured
+              approach, parsing recipe bodies to extract data. Allowed for
+              &quot;forking&quot; a recipe (start with a base &amp; be able to
+              make your changes).
             </Experience>
 
             <Experience
@@ -454,6 +589,14 @@ export default function Page(props) {
               startDate="04/2008"
               endDate="05/2008"
               jobTitle="Owner"
+              skillsUsed={[
+                'Ruby',
+                'Ruby on Rails',
+                'MySQL',
+                'HTML',
+                'CSS',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
               Run as a Ruby on Rails shop for short period of time.
@@ -467,6 +610,16 @@ export default function Page(props) {
               startDate="11/2005"
               endDate="04/2008"
               jobTitle="Web Developer"
+              skillsUsed={[
+                'PHP',
+                'MySQL',
+                'Javascript',
+                'Ruby',
+                'Ruby on Rails',
+                'HTML',
+                'CSS',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
               Did PHP/MySQL development for a variety of clients.
@@ -482,6 +635,12 @@ export default function Page(props) {
               startDate="01/2007"
               endDate="04/2007"
               jobTitle="Contractor"
+              skillsUsed={[
+                'PHP',
+                'HTML',
+                'CSS',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
               Developed a e-sales application for a Fortune 500
@@ -494,6 +653,11 @@ export default function Page(props) {
               startDate="06/2005"
               endDate="11/2005"
               jobTitle="Developer"
+              skillsUsed={[
+                'Perl',
+                'Oracle',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
               initialCollapsed={true}
             >
               Used Perl &amp; Oracle to help process online ACH
@@ -505,7 +669,7 @@ export default function Page(props) {
             </div>
           </section>
 
-          <div class="mini-divider">&nbsp;</div>
+          <div className="mini-divider">&nbsp;</div>
 
           <section
             className="portfolio md:visible print:hidden"
@@ -513,7 +677,7 @@ export default function Page(props) {
             <Portfolio />
           </section>
 
-          <div class="mini-divider md:hidden print:hidden">&nbsp;</div>
+          <div className="mini-divider md:hidden print:hidden">&nbsp;</div>
         </div>
       </div>
 
