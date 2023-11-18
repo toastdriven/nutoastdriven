@@ -107,6 +107,10 @@ footer {
 
 #experience {
   @apply mb-9;
+
+  p:last-child {
+    @apply mb-0;
+  }
 }
 
 #skills {
@@ -123,6 +127,10 @@ footer {
 
     dd a {
       @apply text-zinc-500;
+    }
+
+    dd a.highlighted-skill {
+      @apply md:text-amber-500 font-bold;
     }
   }
 }

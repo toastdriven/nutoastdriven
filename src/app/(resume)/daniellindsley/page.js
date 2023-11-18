@@ -63,7 +63,7 @@ function About(props) {
   );
 }
 
-function Skills({ ...props }) {
+function Skills({ highlightedSkills, ...props }) {
   const professionalSkills = [
     { name: 'Python', url: 'https://python.org/' },
     { name: 'Django', url: 'https://djangoproject.com/' },
@@ -105,7 +105,7 @@ function Skills({ ...props }) {
   ];
 
   return (
-    <>
+    <div>
       <h2><a name="skills-link">Skills</a></h2>
 
       <dl>
@@ -114,6 +114,7 @@ function Skills({ ...props }) {
           <dd key={offset}>
             <a
               href={skillInfo.url}
+              className={highlightedSkills.indexOf(skillInfo.name) >= 0 ? "highlighted-skill" : ""}
             >
               {skillInfo.name}
             </a>
@@ -123,13 +124,16 @@ function Skills({ ...props }) {
         <dt>Older/Experimental</dt>
         {olderSkills.map((skillInfo, offset) => (
           <dd key={offset}>
-            <a href={skillInfo.url}>
+            <a
+              href={skillInfo.url}
+              className={highlightedSkills.indexOf(skillInfo.name) >= 0 ? "highlighted-skill" : ""}
+            >
               {skillInfo.name}
             </a>
           </dd>
         ))}
       </dl>
-    </>
+    </div>
   );
 }
 
@@ -168,12 +172,29 @@ function Experience({
   ...props
 }) {
   const [collapsed, setCollapsed] = useState(allowCollapsed);
+  const [fadeOut, setFadeOut] = useState(null);
+
+  function handleEnter() {
+    if (fadeOut) {
+      clearTimeout(fadeOut);
+      setFadeOut(null);
+    }
+
+    setHighlightedSkills(skillsUsed);
+  }
+
+  function handleLeave() {
+    const fadeId = setTimeout(() => {
+      setHighlightedSkills([]);
+    }, 2000);
+    setFadeOut(fadeId);
+  }
 
   return (
     <div
       className="mb-8 flex flex-row"
-      onMouseEnter={() => setHighlightedSkills(skillsUsed)}
-      onMouseLeave={() => setHighlightedSkills([])}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       {allowCollapsed && (
         <div
@@ -334,7 +355,7 @@ export default function Page(props) {
   return (
     <div className="container">
       <div className="md:flex md:flex-row print:flex print:flex-row">
-        <div className="md:w-96 print:w-96">
+        <div className="md:w-96 print:w-96 md:relative">
           <header id="contact">
             <Contact />
           </header>
@@ -367,6 +388,10 @@ export default function Page(props) {
 
           <section id="experience">
             <h2><a name="experience-link">Experience</a></h2>
+
+            <div className="hidden md:block md:mb-4 md:italic md:text-zinc-500 md:text-sm">
+              Hover to highlight skills.
+            </div>
 
             <Experience
               companyName="Pawlicy Advisor"
@@ -728,6 +753,11 @@ export default function Page(props) {
 
         <div className="snow">☃</div>
       </footer>
+
+      <div className="hidden">
+        {/* For classes Tailwind otherwise wouldn't pick up. */}
+        <div className="text-amber-500">&nbsp;</div>
+      </div>
     </div>
   );
 }
