@@ -133,6 +133,29 @@ function Skills({ ...props }) {
   );
 }
 
+function Disclosure({ collapsed, setCollapsed, ...props }) {
+  return (
+    <button
+      type="button"
+      className="inline-block mr-2"
+      onClick={() => setCollapsed(!collapsed)}
+    >
+      {collapsed
+        ? (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        )
+        : (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        )
+      }
+    </button>
+  );
+}
+
 function Experience({
   companyName,
   companyUrl = null,
@@ -141,19 +164,30 @@ function Experience({
   jobTitle,
   skillsUsed = [],
   setHighlightedSkills,
-  initialCollapsed = false,
+  allowCollapsed = false,
   ...props
 }) {
-  const [collapsed, setCollapsed] = useState(initialCollapsed);
+  const [collapsed, setCollapsed] = useState(allowCollapsed);
 
   return (
     <div
-      className="mb-8 cursor-pointer"
-      onClick={() => setCollapsed(!collapsed)}
+      className="mb-8 flex flex-row"
+      onMouseEnter={() => setHighlightedSkills(skillsUsed)}
+      onMouseLeave={() => setHighlightedSkills([])}
     >
+      {allowCollapsed && (
+        <div
+          className="align-top print:hidden"
+        >
+          <Disclosure
+            collapsed={collapsed}
+            setCollapsed={setCollapsed}
+          />
+        </div>
+      )}
       {!collapsed
         ? (
-          <>
+          <div>
             <h3>
               {companyUrl
                 ? (
@@ -173,7 +207,7 @@ function Experience({
             <p>
               {props.children}
             </p>
-          </>
+          </div>
         )
         : (
           <div
@@ -527,7 +561,7 @@ export default function Page(props) {
                 'Redis',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Ran my own Python/Django consultancy. Originally just me, we
               had as many as three people. Helped many clients with
@@ -553,7 +587,7 @@ export default function Page(props) {
                 'Redis',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Worked for the birthplace of Django developing Ellington, an
               award-winning news CMS. Ported it to Django 1.0, vastly revised
@@ -575,7 +609,7 @@ export default function Page(props) {
                 'PostgreSQL',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Developed a more modern recipe site in Django. Took a structured
               approach, parsing recipe bodies to extract data. Allowed for
@@ -597,7 +631,7 @@ export default function Page(props) {
                 'CSS',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Run as a Ruby on Rails shop for short period of time.
               Worked on a reporting site (using Flex, Actionscript &amp; Rails)
@@ -620,7 +654,7 @@ export default function Page(props) {
                 'CSS',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Did PHP/MySQL development for a variety of clients.
               Tasks included developing on multi-lingual CMSes, several
@@ -641,7 +675,7 @@ export default function Page(props) {
                 'CSS',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Developed a e-sales application for a Fortune 500
               sales team using PHP/MySQL &amp; a custom PHP5
@@ -658,7 +692,7 @@ export default function Page(props) {
                 'Oracle',
               ]}
               setHighlightedSkills={setHighlightedSkills}
-              initialCollapsed={true}
+              allowCollapsed={true}
             >
               Used Perl &amp; Oracle to help process online ACH
               transactions.
