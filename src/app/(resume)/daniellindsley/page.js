@@ -71,6 +71,7 @@ function Skills({ highlightedSkills, ...props }) {
     { name: 'React', url: 'https://react.dev/' },
     { name: 'Preact', url: 'https://preactjs.com/' },
     { name: 'Next.js', url: 'https://nextjs.org/' },
+    { name: 'Go', url: 'https://go.dev/' },
     { name: 'HTML', url: 'https://en.wikipedia.org/wiki/HTML' },
     { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
     { name: 'Docker', url: 'https://docker.com/' },
@@ -92,7 +93,6 @@ function Skills({ highlightedSkills, ...props }) {
     { name: 'Google Cloud', url: 'https://cloud.google.com/' },
     { name: 'Typescript', url: 'https://www.typescriptlang.org/' },
     { name: 'Arduino', url: 'https://www.arduino.cc/' },
-    { name: 'Go', url: 'https://go.dev/' },
     { name: 'Swift/Obj-C/Cocoa', url: 'https://developer.apple.com/swift/' },
     { name: 'Apache', url: 'https://apache.org/' },
     { name: 'MySQL', url: 'https://www.mysql.com/' },
@@ -392,6 +392,32 @@ export default function Page(props) {
             <div className="hidden md:block md:mb-4 md:italic md:text-zinc-500 md:text-sm">
               Hover to highlight skills.
             </div>
+
+            <Experience
+              companyName="Abnormal Security"
+              companyUrl="https://abnormalsecurity.com/"
+              startDate="01/2024"
+              endDate="07/2024"
+              jobTitle="Senior Full-Stack Software Engineer"
+              skillsUsed={[
+                'Python',
+                'Go',
+                'Django',
+                'React',
+                'Javascript',
+                'Typescript',
+                'PostgreSQL',
+                'Docker',
+              ]}
+              setHighlightedSkills={setHighlightedSkills}
+            >
+              Worked on the Inbound Email Platform team, using Python & Go.
+              Designed, planned, implemented, & managed a large Gmail
+              remediation project. Pushed several documentation initiatives, &
+              updated a service based on a security review.
+              Mentored several junior engineers, held interviews for other
+              senior engineers, & many (~360) code reviews.
+            </Experience>
 
             <Experience
               companyName="Pawlicy Advisor"
