@@ -397,7 +397,7 @@ export default function Page(props) {
               companyName="Abnormal Security"
               companyUrl="https://abnormalsecurity.com/"
               startDate="01/2024"
-              endDate="07/2024"
+              endDate="08/2024"
               jobTitle="Senior Full-Stack Software Engineer"
               skillsUsed={[
                 'Python',
