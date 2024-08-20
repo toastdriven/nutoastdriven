@@ -83,7 +83,7 @@ a:hover {
 }
 
 pre {
-  @apply overflow-x-auto bg-gray-800 text-slate-100 p-4 mb-4;
+  @apply overflow-x-auto bg-gray-500 text-slate-100 p-4 mb-4;
 }
 
 blockquote {
@@ -103,7 +103,7 @@ blockquote em {
 }
 
 p code {
-  @apply bg-gray-800 text-slate-100 px-2 py-1;
+  @apply bg-gray-500 text-slate-100 px-2 py-1;
 }
 
 footer {
