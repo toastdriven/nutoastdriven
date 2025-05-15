@@ -412,7 +412,7 @@ export default function Page(props) {
 
             <Experience
               companyName="Strongest"
-              companyUrl="https://strongest.ai/"
+              companyUrl="https://strongest.com/"
               startDate="02/2025"
               endDate="Present"
               jobTitle="Contractor"
